@@ -6,11 +6,11 @@ type SkipNode struct {
 	Height int
 }
 
-func NewSkipNode(val, maxHeight int) *SkipNode {
+func NewSkipNode(val, height, maxHeight int) *SkipNode {
 	next := make([]*SkipNode, maxHeight)
 	return &SkipNode{
 		Val:    val,
 		Next:   next,
-		Height: 1,
+		Height: height,
 	}
 }

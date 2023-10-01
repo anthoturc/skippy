@@ -28,3 +28,19 @@ func TestEmptySkipLis(t *testing.T) {
 	assert.False(t, sl.Contains(math.MaxInt))
 	assert.False(t, sl.Contains(math.MinInt))
 }
+
+func TestInsertSkipList(t *testing.T) {
+	sl := newSkipList()
+
+	for i := 0; i < 10; i++ {
+		sl.Insert(i)
+	}
+
+	for i := 0; i < 10; i++ {
+		assert.True(t, sl.Contains(i))
+	}
+
+	for i := 10; i < 20; i++ {
+		assert.False(t, sl.Contains(i))
+	}
+}

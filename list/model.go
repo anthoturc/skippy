@@ -23,6 +23,8 @@ type SkipList interface {
 	Contains(item int) bool
 
 	Delete(item int)
+
+	Size() uint
 }
 
 func NewSkipList() SkipList {
@@ -30,10 +32,10 @@ func NewSkipList() SkipList {
 }
 
 func newSkipList() *skipList {
-	head := node.NewSkipNode(math.MinInt, MaxHeight)
+	head := node.NewSkipNode(math.MinInt, MaxHeight, MaxHeight)
 	head.Height = MaxHeight
 
-	tail := node.NewSkipNode(math.MaxInt, MaxHeight)
+	tail := node.NewSkipNode(math.MaxInt, MaxHeight, MaxHeight)
 	tail.Height = MaxHeight
 	for i := 0; i < MaxHeight; i++ {
 		head.Next[i] = tail

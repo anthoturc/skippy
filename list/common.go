@@ -1,6 +1,11 @@
 package list
 
-import "github.com/anthoturc/go-skippy/internal/node"
+import (
+	"math/rand"
+	"time"
+
+	"github.com/anthoturc/go-skippy/internal/node"
+)
 
 func (s *skipList) searchKey(key int) *node.SkipNode {
 	node := s.head
@@ -35,8 +40,9 @@ func (s *skipList) searchPredecessorsForInsert(key int) []*node.SkipNode {
 
 		// If this was the case then we would have kept going down in the loop
 		// but we are on the bottom row instead and there is no other place to go.
-		// In this case we have found the predecessor or the correct node to insert
-		if key <= curr.Val {
+		// In this case we have found the predecessor or the correct node to insert if the current
+		// node's *next* value is greater than or equal to the key
+		if key <= curr.Next[idx].Val {
 			break
 		}
 		curr = curr.Next[idx]
@@ -45,4 +51,16 @@ func (s *skipList) searchPredecessorsForInsert(key int) []*node.SkipNode {
 	predecessors[idx] = curr
 
 	return predecessors
+}
+
+func (s *skipList) pick50Fifty() int {
+	return rand.New(rand.NewSource(time.Now().UnixNano())).Intn(100)
+}
+
+func (s *skipList) genRandomHeight() (height int) {
+	height = 1
+	for height < MaxHeight && s.pick50Fifty() < 50 {
+		height += 1
+	}
+	return height
 }

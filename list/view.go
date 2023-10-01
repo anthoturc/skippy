@@ -11,14 +11,14 @@ func (s *skipList) String() string {
 		sb.WriteString("-\u221e ")
 		curr := s.head.Next[i]
 		for j := 0; j < int(s.size); j++ {
-			if curr != nil {
-				sb.WriteString(fmt.Sprintf(" -> %d - ", curr.Val))
+			if curr != nil && curr != s.tail {
+				sb.WriteString(fmt.Sprintf("- > %d -", curr.Val))
 			} else {
-				sb.WriteString(" - ")
+				sb.WriteString(" -")
 			}
 			curr = curr.Next[i]
 		}
-		sb.WriteString(" -> \u221e\n")
+		sb.WriteString(" - > \u221e\n")
 	}
 	return sb.String()
 }
