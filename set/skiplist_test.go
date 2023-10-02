@@ -44,3 +44,39 @@ func TestInsertSkipList(t *testing.T) {
 		assert.False(t, sl.Contains(i))
 	}
 }
+
+func TestInsertSkipListDuplicates(t *testing.T) {
+	sl := newSkipListSet()
+
+	n := 10
+	for i := 0; i < n; i++ {
+		sl.Insert(i)
+		sl.Insert(i)
+	}
+
+	for i := 0; i < n; i++ {
+		assert.True(t, sl.Contains(i))
+	}
+
+	assert.Equal(t, uint(n), sl.Size())
+}
+
+func TestDeleteSkipList(t *testing.T) {
+
+	sl := newSkipListSet()
+
+	n := 10
+
+	for i := 0; i < n; i++ {
+		sl.Insert(i)
+		assert.Equal(t, uint(i+1), sl.Size())
+	}
+	assert.Equal(t, uint(n), sl.Size())
+
+	for i := n - 1; i >= 0; i-- {
+		assert.True(t, sl.Contains(i))
+		sl.Delete(i)
+		assert.False(t, sl.Contains(i))
+		assert.Equal(t, uint(i), sl.Size())
+	}
+}

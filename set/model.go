@@ -16,11 +16,11 @@ type skipListSet struct {
 }
 
 type SkipListSet interface {
-	Insert(item int)
+	Insert(key int)
 
-	Contains(item int) bool
+	Contains(key int) bool
 
-	Delete(item int)
+	Delete(key int)
 
 	Size() uint
 }

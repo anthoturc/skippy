@@ -26,14 +26,17 @@ func (s *skipListSet) searchKey(key int) *node.SkipNode {
 	return node.Next[idx]
 }
 
-func (s *skipListSet) searchPredecessorsForInsert(key int) []*node.SkipNode {
+func (s *skipListSet) searchPredecessorsForKey(key int) []*node.SkipNode {
 
 	curr := s.head
 	idx := s.head.Height - 1
 
 	predecessors := make([]*node.SkipNode, s.head.Height)
 	for idx >= 0 && curr != nil {
-		for idx > 0 && key < curr.Next[idx].Val {
+		// This condition ensures that we go through the entire height of the list.
+		// If the key was strictly less than the next value at a given height (i.e. the idx),
+		// then we would stop early and some members of the predecessor would be nil.
+		for idx > 0 && key <= curr.Next[idx].Val {
 			predecessors[idx] = curr
 			idx -= 1
 		}

@@ -7,9 +7,15 @@ import (
 )
 
 func main() {
-	skipList := set.NewSkipListSet()
-	for i := 9; i >= 1; i -= 1 {
-		skipList.Insert(i)
-	}
-	fmt.Println(skipList)
+	set := set.NewSkipListSet()
+
+	set.Insert(1)
+	set.Insert(2)
+	set.Insert(3)
+
+	fmt.Println(set)
+	set.Delete(1)
+	fmt.Println(set)
+	set.Delete(2)
+	fmt.Println(set)
 }
