@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/anthoturc/go-skippy/internal/node"
+	"github.com/anthoturc/skippy/internal/node"
 )
 
 func (s *skipListSet) searchKey(key int) *node.SkipNode {

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/anthoturc/go-skippy/set"
+	"github.com/anthoturc/skippy/set"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package set
 import (
 	"math"
 
-	"github.com/anthoturc/go-skippy/internal/node"
+	"github.com/anthoturc/skippy/internal/node"
 )
 
 // TODO: This should probably be a configuration value

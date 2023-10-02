@@ -1,7 +1,7 @@
 package set
 
 import (
-	"github.com/anthoturc/go-skippy/internal/node"
+	"github.com/anthoturc/skippy/internal/node"
 )
 
 // Insert will attempt to add an item to the SkipList if it doesn't already exist.
