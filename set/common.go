@@ -62,7 +62,7 @@ func (s *skipListSet) pick50Fifty() int {
 
 func (s *skipListSet) genRandomHeight() (height int) {
 	height = 1
-	for height < MaxHeight && s.pick50Fifty() < 50 {
+	for height < MaxHeight && s.pick50Fifty() < 65 { // TODO: The probability should be put into a skip list set config.
 		height += 1
 	}
 	return height

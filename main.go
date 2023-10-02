@@ -9,13 +9,9 @@ import (
 func main() {
 	set := set.NewSkipListSet()
 
-	set.Insert(1)
-	set.Insert(2)
-	set.Insert(3)
+	for i := 0; i < 10; i++ {
+		set.Insert(i)
+	}
 
-	fmt.Println(set)
-	set.Delete(1)
-	fmt.Println(set)
-	set.Delete(2)
 	fmt.Println(set)
 }
