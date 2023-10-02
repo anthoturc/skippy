@@ -1,11 +1,11 @@
-package list
+package set
 
 import (
 	"fmt"
 	"strings"
 )
 
-func (s *skipList) String() string {
+func (s *skipListSet) String() string {
 
 	index := map[int]int{}
 	node := s.head.Next[0]

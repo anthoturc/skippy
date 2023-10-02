@@ -1,4 +1,4 @@
-package list
+package set
 
 import (
 	"math/rand"
@@ -7,7 +7,7 @@ import (
 	"github.com/anthoturc/go-skippy/internal/node"
 )
 
-func (s *skipList) searchKey(key int) *node.SkipNode {
+func (s *skipListSet) searchKey(key int) *node.SkipNode {
 	node := s.head
 	idx := s.head.Height - 1
 	for idx >= 0 && node != nil {
@@ -26,7 +26,7 @@ func (s *skipList) searchKey(key int) *node.SkipNode {
 	return node.Next[idx]
 }
 
-func (s *skipList) searchPredecessorsForInsert(key int) []*node.SkipNode {
+func (s *skipListSet) searchPredecessorsForInsert(key int) []*node.SkipNode {
 
 	curr := s.head
 	idx := s.head.Height - 1
@@ -53,11 +53,11 @@ func (s *skipList) searchPredecessorsForInsert(key int) []*node.SkipNode {
 	return predecessors
 }
 
-func (s *skipList) pick50Fifty() int {
+func (s *skipListSet) pick50Fifty() int {
 	return rand.New(rand.NewSource(time.Now().UnixNano())).Intn(100)
 }
 
-func (s *skipList) genRandomHeight() (height int) {
+func (s *skipListSet) genRandomHeight() (height int) {
 	height = 1
 	for height < MaxHeight && s.pick50Fifty() < 50 {
 		height += 1

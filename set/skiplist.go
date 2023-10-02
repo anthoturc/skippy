@@ -1,11 +1,11 @@
-package list
+package set
 
 import (
 	"github.com/anthoturc/go-skippy/internal/node"
 )
 
 // Insert will attempt to add an item to the SkipList if it doesn't already exist.
-func (s *skipList) Insert(item int) {
+func (s *skipListSet) Insert(item int) {
 
 	predecessors := s.searchPredecessorsForInsert(item)
 	if predecessors[0].Val == item {
@@ -22,15 +22,7 @@ func (s *skipList) Insert(item int) {
 	s.size += 1
 }
 
-func (s *skipList) Find(item int) int {
-	node := s.searchKey(item)
-	if node != nil && node != s.head && node != s.tail {
-		return node.Val
-	}
-	return 0
-}
-
-func (s *skipList) Contains(item int) bool {
+func (s *skipListSet) Contains(item int) bool {
 	node := s.searchKey(item)
 
 	return node != nil &&
@@ -40,10 +32,10 @@ func (s *skipList) Contains(item int) bool {
 		node.Val == item
 }
 
-func (s *skipList) Delete(item int) {
+func (s *skipListSet) Delete(item int) {
 
 }
 
-func (s *skipList) Size() uint {
+func (s *skipListSet) Size() uint {
 	return s.size
 }

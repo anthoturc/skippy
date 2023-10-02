@@ -1,4 +1,4 @@
-package list
+package set
 
 import (
 	"math"
@@ -8,7 +8,7 @@ import (
 )
 
 func TestSkipListInit(t *testing.T) {
-	sl := newSkipList()
+	sl := newSkipListSet()
 
 	assert.NotNil(t, sl.head)
 	assert.NotNil(t, sl.tail)
@@ -21,7 +21,7 @@ func TestSkipListInit(t *testing.T) {
 }
 
 func TestEmptySkipLis(t *testing.T) {
-	sl := newSkipList()
+	sl := newSkipListSet()
 
 	assert.False(t, sl.Contains(2))
 	assert.False(t, sl.Contains(1))
@@ -30,7 +30,7 @@ func TestEmptySkipLis(t *testing.T) {
 }
 
 func TestInsertSkipList(t *testing.T) {
-	sl := newSkipList()
+	sl := newSkipListSet()
 
 	for i := 0; i < 10; i++ {
 		sl.Insert(i)

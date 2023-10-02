@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/anthoturc/go-skippy/list"
+	"github.com/anthoturc/go-skippy/set"
 )
 
 func main() {
-	skipList := list.NewSkipList()
+	skipList := set.NewSkipListSet()
 	for i := 9; i >= 1; i -= 1 {
 		skipList.Insert(i)
 	}

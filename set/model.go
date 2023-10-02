@@ -1,4 +1,4 @@
-package list
+package set
 
 import (
 	"math"
@@ -9,16 +9,14 @@ import (
 // TODO: This should probably be a configuration value
 const MaxHeight = 17
 
-type skipList struct {
+type skipListSet struct {
 	head *node.SkipNode
 	tail *node.SkipNode
 	size uint
 }
 
-type SkipList interface {
+type SkipListSet interface {
 	Insert(item int)
-
-	Find(item int) int
 
 	Contains(item int) bool
 
@@ -27,11 +25,11 @@ type SkipList interface {
 	Size() uint
 }
 
-func NewSkipList() SkipList {
-	return newSkipList()
+func NewSkipListSet() SkipListSet {
+	return newSkipListSet()
 }
 
-func newSkipList() *skipList {
+func newSkipListSet() *skipListSet {
 	head := node.NewSkipNode(math.MinInt, MaxHeight, MaxHeight)
 	head.Height = MaxHeight
 
@@ -41,7 +39,7 @@ func newSkipList() *skipList {
 		head.Next[i] = tail
 		tail.Next[i] = nil
 	}
-	return &skipList{
+	return &skipListSet{
 		head: head,
 		tail: tail,
 		size: 0,
