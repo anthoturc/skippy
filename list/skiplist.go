@@ -34,7 +34,8 @@ func (s *skipList) Contains(item int) bool {
 	node := s.searchKey(item)
 
 	return node != nil &&
-		node != s.head && // We don't want to count the head or the tail even if asked for MaxInt or MinInt
+		// There could be a case where the item's value is MinInt but we don't want to confuse that
+		// with the tail
 		node != s.tail &&
 		node.Val == item
 }

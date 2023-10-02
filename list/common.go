@@ -23,7 +23,7 @@ func (s *skipList) searchKey(key int) *node.SkipNode {
 		}
 		node = node.Next[idx]
 	}
-	return node
+	return node.Next[idx]
 }
 
 func (s *skipList) searchPredecessorsForInsert(key int) []*node.SkipNode {

@@ -8,8 +8,8 @@ import (
 
 func main() {
 	skipList := list.NewSkipList()
-	skipList.Insert(1)
-	// skipList.Insert(2)
-	// skipList.Insert(3)
+	for i := 9; i >= 1; i -= 1 {
+		skipList.Insert(i)
+	}
 	fmt.Println(skipList)
 }
