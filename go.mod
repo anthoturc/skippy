@@ -1,4 +1,4 @@
-module github.com/anthoturc/go-skippy
+module github.com/anthoturc/skippy
 
 go 1.21.1
 
