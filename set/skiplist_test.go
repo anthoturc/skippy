@@ -37,8 +37,6 @@ func TestInsertSkipList(t *testing.T) {
 		sl.Insert(i)
 	}
 
-	fmt.Println(sl)
-
 	for i := 0; i < 10; i++ {
 		t.Run(fmt.Sprintf("skip-list-contains-%d", i), func(t *testing.T) {
 			assert.True(t, sl.Contains(i))
