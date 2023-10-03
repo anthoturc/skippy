@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	set := set.NewSkipListSet()
+	set := set.NewSkipListSet[int]()
 
 	for i := 0; i < 10; i++ {
 		set.Insert(i)

@@ -8,7 +8,7 @@ import (
 )
 
 func TestSkipListInit(t *testing.T) {
-	sl := newSkipListSet()
+	sl := newSkipListSet[int]()
 
 	assert.NotNil(t, sl.head)
 	assert.NotNil(t, sl.tail)
@@ -21,7 +21,7 @@ func TestSkipListInit(t *testing.T) {
 }
 
 func TestEmptySkipLis(t *testing.T) {
-	sl := newSkipListSet()
+	sl := newSkipListSet[int]()
 
 	assert.False(t, sl.Contains(2))
 	assert.False(t, sl.Contains(1))
@@ -30,7 +30,7 @@ func TestEmptySkipLis(t *testing.T) {
 }
 
 func TestInsertSkipList(t *testing.T) {
-	sl := newSkipListSet()
+	sl := newSkipListSet[int]()
 
 	for i := 0; i < 10; i++ {
 		sl.Insert(i)
@@ -46,7 +46,7 @@ func TestInsertSkipList(t *testing.T) {
 }
 
 func TestInsertSkipListDuplicates(t *testing.T) {
-	sl := newSkipListSet()
+	sl := newSkipListSet[int]()
 
 	n := 10
 	for i := 0; i < n; i++ {
@@ -63,7 +63,7 @@ func TestInsertSkipListDuplicates(t *testing.T) {
 
 func TestDeleteSkipList(t *testing.T) {
 
-	sl := newSkipListSet()
+	sl := newSkipListSet[int]()
 
 	n := 10
 
