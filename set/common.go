@@ -68,13 +68,10 @@ func (s *skipListSet[K]) genRandomHeight() (height int) {
 // lessEq will return true if the `key` <= `n.Val`. This function accounts
 // for the head and tail being possible comparisons
 func (s *skipListSet[K]) lessEq(key K, n *node.SkipNode[K]) bool {
-	if n.IsHead {
-		// The head corresponds to -inf for the underlying type
-		// so it will *always* be less than
-		return false
-	}
 
-	if n.IsTail { // The tail corresponds to +inf for the underlying type
+	// The tail corresponds to +inf for the underlying type. We will never compare to the head
+	// because the head cannot every be the "next" node in the list.
+	if n.IsTail {
 		return true
 	}
 

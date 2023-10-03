@@ -71,12 +71,17 @@ func TestDeleteSkipList(t *testing.T) {
 
 	sl := newSkipListSet[int]()
 
+	// Deleting an entry that doesn't exist shouldn't trigger a failure
+	sl.Delete(1)
+	assert.Equal(t, uint(0), sl.Size())
+
 	n := 10
 
 	for i := 0; i < n; i++ {
 		sl.Insert(i)
 		assert.Equal(t, uint(i+1), sl.Size())
 	}
+	sl.Delete(n) // The skip list shouldn't delete elements that don't exist
 	assert.Equal(t, uint(n), sl.Size())
 
 	for i := n - 1; i >= 0; i-- {
@@ -91,4 +96,9 @@ func TestStringSkipList(t *testing.T) {
 	sl := newSkipListSet[int]()
 	repr := sl.String()
 	assert.NotEmpty(t, repr)
+}
+
+func TestSkipListInterface(t *testing.T) {
+	sl := NewSkipListSet[int]()
+	assert.Equal(t, uint(0), sl.Size())
 }
