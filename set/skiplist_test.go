@@ -86,3 +86,9 @@ func TestDeleteSkipList(t *testing.T) {
 		assert.Equal(t, uint(i), sl.Size())
 	}
 }
+
+func TestStringSkipList(t *testing.T) {
+	sl := newSkipListSet[int]()
+	repr := sl.String()
+	assert.NotEmpty(t, repr)
+}
