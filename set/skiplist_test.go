@@ -1,6 +1,7 @@
 package set
 
 import (
+	"fmt"
 	"math"
 	"testing"
 
@@ -36,12 +37,19 @@ func TestInsertSkipList(t *testing.T) {
 		sl.Insert(i)
 	}
 
+	fmt.Println(sl)
+
 	for i := 0; i < 10; i++ {
-		assert.True(t, sl.Contains(i))
+		t.Run(fmt.Sprintf("skip-list-contains-%d", i), func(t *testing.T) {
+			assert.True(t, sl.Contains(i))
+		})
+
 	}
 
 	for i := 10; i < 20; i++ {
-		assert.False(t, sl.Contains(i))
+		t.Run(fmt.Sprintf("skip-list-does-not-contain-%d", i), func(t *testing.T) {
+			assert.False(t, sl.Contains(i))
+		})
 	}
 }
 

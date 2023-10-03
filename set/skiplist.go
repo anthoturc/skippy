@@ -11,7 +11,9 @@ func (s *skipListSet[K]) Insert(key K) {
 
 	// There is a chance that the first predecessor's
 	// immediate successor *is* the item we are trying to insert
-	if predecessors[0].Next[0].Key == key {
+	// Note: The zero value for a given type should still be inserted
+	// even though, the value corresponds to the head and tail of the list
+	if predecessors[0].Next[0] != s.tail && predecessors[0].Next[0].Key == key {
 		return
 	}
 
@@ -31,10 +33,7 @@ func (s *skipListSet[K]) Contains(key K) bool {
 		return false
 	}
 	node := s.searchKey(key)
-
 	return node != nil &&
-		// There could be a case where the item's value is MinInt but we don't want to confuse that
-		// with the tail
 		node != s.tail &&
 		node.Key == key
 }

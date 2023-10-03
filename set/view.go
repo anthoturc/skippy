@@ -19,7 +19,7 @@ func (s *skipListSet[K]) String() string {
 		sb.WriteString("-\u221e -")
 		curr := s.head.Next[i]
 		for j := 0; j < int(s.size); j++ {
-			if curr != nil && curr.Key == index[j] {
+			if curr != nil && !curr.IsTail && curr.Key == index[j] {
 				sb.WriteString(fmt.Sprintf(" %+v ", curr.Key))
 				curr = curr.Next[i]
 			} else {
